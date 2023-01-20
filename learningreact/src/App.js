@@ -1,47 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.handlePClick = this.handlePClick.bind(this);
-    this.state = {
-      name: "Dayvd Allyson",
-      counter: 0
-    }
- }
-
-  handlePClick() {
-    this.setState({ name: "Dayvd100"});
-  }
   
-  handleAClick = (event) => {
-    event.preventDefault();
-    const counter = this.state.counter;
-    this.setState({counter: counter+1})
-    console.log(counter);
-    
+  state = {
+    posts: [
+      {
+      id: 1,
+      title: "título 1",
+      body:"corpo 1"
+    },
+    {
+      id: 2,
+      title: "título 2",
+      body:"corpo 2"
+    },
+    {
+      id: 3,
+      title: "título 3",
+      body:"corpo 3"
+    },
+  
+  ]
   }
 
   render(){
-    const {name, counter} = this.state;
+    const { posts } = this.state;
+    console.log(posts)
     return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p onClick = {this.handlePClick}>
-        {name} {counter}
-        </p>
-        <a onClick={this.handleAClick}
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {posts.map(nomeDoRetorno => <h1 key={nomeDoRetorno.id}>{nomeDoRetorno.title}</h1>)}
     </div>
   );
 }
